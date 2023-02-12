@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Urban Alchemy</title>
+  
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+
+</head>
+    
+<body>
+    <header>
+        <a href="index.html"><img class="logo" src="asset/bi/logo.png"></a>
+    </header>
+        <div class="item-info">
+        <h3 style="margin:0;padding:0;">Halo no.1</h3>
+        <p style="margin-bottom:2rem;">Brass Incense Holder</p>
+        <p style="color:#aab1b8;">Brass 100%</p>
+        <p style="color:#aab1b8; margin-bottom:6rem;">Handmade in Korea</p>
+        <p style="color:#aab1b8;">Get this ></p>
+        </div>
+    <footer>
+        <p>© <script>document.write(/\d{4}/.exec(Date())[0])</script>. PHYLON.</p>
+    </footer>
+    <canvas id="hero-lightpass"/>
+
+
+<script>
+const html = document.documentElement;
+const canvas = document.getElementById("hero-lightpass");
+const context = canvas.getContext("2d");
+
+const frameCount = 10;
+const currentFrame = index => (
+  `asset/mainbg/${index.toString().padStart(4, '0')}.png`
+)
+
+const preloadImages = () => {
+  for (let i = 1; i < frameCount; i++) {
+    const img = new Image();
+    img.src = currentFrame(i);
+  }
+};
+
+const img = new Image()
+img.src = currentFrame(1);
+canvas.width=1920;
+canvas.height=1080;
+img.onload=function(){
+  context.drawImage(img, 0, 0);
+}
+
+const updateImage = index => {
+  img.src = currentFrame(index);
+  context.drawImage(img, 0, 0);
+}
+
+window.addEventListener('scroll', () => {  
+  const scrollTop = html.scrollTop;
+  const maxScrollTop = html.scrollHeight - window.innerHeight;
+  const scrollFraction = scrollTop / maxScrollTop;
+  const frameIndex = Math.min(
+    frameCount - 1,
+    Math.ceil(scrollFraction * frameCount)
+  );
+  
+  requestAnimationFrame(() => updateImage(frameIndex + 1))
+});
+
+preloadImages()
+</script>
+</body>
+</html>
