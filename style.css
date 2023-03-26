@@ -9,6 +9,7 @@ html {
 body {
     height: 500vh;
     padding:2rem;
+    color:#fff;
     background: #000;
     overflow-y: scroll;
     -ms-overflow-style: none;  /* IE and Edge */
@@ -51,30 +52,73 @@ a.logo-font{
     margin: auto 0;
 }
 
-.item-info {
-    z-index:1;
-    position:fixed;
-    top:33%;
-    line-height:100%;
-}
+/* SCROLL DOWN TEXT */
+.scroll-down-text-container {
+    
+    width: 100%;
+    height: 1rem;
+    display: flex;
+    justify-content: end;
+    z-index: 100;
+  }
+  
+  .scroll-down-text {
+    font-size: 1rem;
+    font-weight: 300;
+    color: rgb(255, 255, 255);
+  }
+  
+  .scroll-down-text .down-arrow {
+    position: relative;
+    animation: bounce 1s infinite;
+  }
+  .bottom-page-element-container {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 0;
+    z-index: 100;
+  }
+  
+  .bottom-page-element{
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 2rem;
+    font-weight: 600;
+    max-width: 300px;
+    color: #fff;
+    opacity: 0;
+  }
 
-.item-info h3{
-    margin-bottom:0;
-    font-size:2rem;
-    font-weight:700;
-    color:#fff;
-}
-
-.item-info p{
-    margin-bottom:0;
-    font-size:1rem;
-    font-weight:400;
-    color:#fff;
+  .bottom-page-element p{
     font-family: 'Roboto', sans-serif;
-}
+    font-size: 1rem;
+    font-weight: 500;
+    max-width: 300px;
+    color: #fff;
+  }
+
+  .bottom-page-element.show {
+    transition: opacity 0.5s ease;
+    opacity: 1;
+  }
+  
+  @keyframes bounce {
+    0% {
+      top: 0;
+    }
+    50% {
+      top: 0.3rem;
+    }
+    100% {
+      top: 0;
+    }
+  }
 
 canvas {
-    z-index:0;
+    z-index:-1;
     position: fixed;
     left: 50%;
     top: 50%;
@@ -84,7 +128,7 @@ canvas {
 }
 
 footer {
-    z-index:1;
+    z-index:101;
     position:fixed;
     bottom:0;
     margin-bottom:2rem;

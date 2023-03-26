@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Urban Alchemist</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,63 +16,30 @@
     
 <body>
     <header>
-        <a class="logo-font" href="index.html"><img class="logo" src="asset/symbol.png"><b>urban</b>alchemist</a>
+        <a class="logo-font" href="index.html"><!--img class="logo" src="asset/symbol.png"--><b>urban</b>alchemist</a>
     </header>
-        <div class="item-info">
-        <h3>halo no.1</h3>
-        <p style="margin-bottom:3rem;">Incense Holder</p>
-        <p>coming soon</p>
-        <!-- <p style="color:#aab1b8;">more ></p> -->
-        </div>
+    <div class="scroll-down-text-container">
+      <h2 class="scroll-down-text">
+        Scroll Down
+      </h2>
+    </div>
+
+
     <footer>
         <p>© <script>document.write(/\d{4}/.exec(Date())[0])</script>. <a href="https://phylonstudio.github.io" target="_blank"> Phylon Design</a>. all rights reserved.</p>
     </footer>
-    <canvas id="hero-lightpass"/>
+
+        <!-- SECOND APPLE-LIKE EFFECT -->
+        <div class="bottom-page-element-container">
+          <div class="bottom-page-element">Halo 1 <p>lorem ipsum</p></div>
+        </div>
+
+    <!-- FIRST PARALLAX EFFECT -->
+    <canvas id="hero-lightpass" />
 
 
-<script>
-const html = document.documentElement;
-const canvas = document.getElementById("hero-lightpass");
-const context = canvas.getContext("2d");
 
-const frameCount = 10;
-const currentFrame = index => (
-  `asset/mainbg/${index.toString().padStart(4, '0')}.png`
-)
+<script src="script.js"></script>
 
-const preloadImages = () => {
-  for (let i = 1; i < frameCount; i++) {
-    const img = new Image();
-    img.src = currentFrame(i);
-  }
-};
-
-const img = new Image()
-img.src = currentFrame(1);
-canvas.width=1920;
-canvas.height=1080;
-img.onload=function(){
-  context.drawImage(img, 0, 0);
-}
-
-const updateImage = index => {
-  img.src = currentFrame(index);
-  context.drawImage(img, 0, 0);
-}
-
-window.addEventListener('scroll', () => {  
-  const scrollTop = html.scrollTop;
-  const maxScrollTop = html.scrollHeight - window.innerHeight;
-  const scrollFraction = scrollTop / maxScrollTop;
-  const frameIndex = Math.min(
-    frameCount - 1,
-    Math.ceil(scrollFraction * frameCount)
-  );
-  
-  requestAnimationFrame(() => updateImage(frameIndex + 1))
-});
-
-preloadImages()
-</script>
 </body>
 </html>
