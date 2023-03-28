@@ -4,7 +4,7 @@ const html = document.documentElement
 const canvas = document.getElementById('hero-lightpass')
 const context = canvas.getContext('2d')
 
-const frameCount = 17
+const frameCount = 36
 const currentFrame = (index) =>
   `asset/image/parallaxscroll/home-1/${index
     .toString()

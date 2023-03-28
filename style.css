@@ -144,3 +144,15 @@ footer a{
     font-weight:600;
     color:#f1f2f3;
 }
+
+@media (max-width: 768px) {
+canvas {
+  z-index:-1;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 160%;
+  max-height: 160%;
+}
+}
